@@ -1,0 +1,28 @@
+
+@import '../../assets//scss/variable.scss';
+
+.ant-layout {
+    height:  100vh;
+};
+
+%background-shared {
+ background-color: $white-color !important;
+  }
+
+.ant-layout-header {
+  @extend %background-shared
+}
+
+.ant-layout-sider {
+  @extend %background-shared
+};
+
+.ant-layout-content {
+  @extend %background-shared
+}
+
+
+.logo {
+    height: 64px;
+    width: 100%;
+}
