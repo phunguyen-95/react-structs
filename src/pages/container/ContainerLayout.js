@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Layout, Menu } from "antd";
-import "./style.scss";
-
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -9,11 +7,12 @@ import {
   VideoCameraOutlined,
   UploadOutlined,
 } from "@ant-design/icons";
-import Post from "../post/index";
+import "./style.scss";
+import Routes from "src/router/index";
 
 const { Header, Sider, Content } = Layout;
 
-const Container = () => {
+const LayoutContainer = () => {
   const [collapsed, setToggle] = useState(false);
 
   return (
@@ -58,11 +57,11 @@ const Container = () => {
             minHeight: 280,
           }}
         >
-          <Post />
+          <Routes />
         </Content>
       </Layout>
     </Layout>
   );
 };
 
-export default Container;
+export default LayoutContainer;

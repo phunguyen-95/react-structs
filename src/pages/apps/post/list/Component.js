@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getPost } from "src/store/post/action";
 
-import { getPost } from "../../store/redux/post/action";
 
-const Post = (props) => {
+const Component = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPost({ postId: 1 }));
+    // eslint-disable-next-line
   }, []);
 
   const { post } = useSelector((state) => state);
@@ -14,4 +15,4 @@ const Post = (props) => {
   return <div>Post</div>;
 };
 
-export default Post;
+export default Component;

@@ -1,6 +1,6 @@
 import { all, put, takeLatest } from "redux-saga/effects";
+import { postService } from "src/services/index";
 
-import { postService } from "../../../services";
 import { getPost, getPostSuccess, getPostFailed } from "./action";
 
 
