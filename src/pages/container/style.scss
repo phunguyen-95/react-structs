@@ -25,4 +25,18 @@
 .logo {
     height: 64px;
     width: 100%;
+    // background-image: url("/public/logo512.png");
+    background-image: repeating-linear-gradient(red, yellow 10%, green 20%);
+}
+
+.toggle {
+  // display: flex;
+  width: 60px;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 20px;
+  ;
 }

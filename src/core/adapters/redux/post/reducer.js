@@ -1,17 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
-import * as USER_TYPES from "./type";
+import * as POST_TYPE from "./type";
 
 const initialState = {
-  name: "phu",
-  age: "26",
+  list: [],
+  isLoading: false,
+  error: undefined,
 };
 
 const userSlice = createSlice({
   name: "post",
   initialState: initialState,
   reducers: {
-    [USER_TYPES.GET_USER]: (state, action) => {
-      return state;
+    [POST_TYPE.GET_POST]: (state, action) => {
+      return { ...state, isLoading: true };
+    },
+    [POST_TYPE.GET_POST_SUCCESS]: (state, action) => {
+      const { payload } = action;
+      return { ...state, isLoading: false, list: payload };
+    },
+    [POST_TYPE.GET_POST_FAILED]: (state, action) => {
+      const { payload } = action;
+      return { ...state, isLoading: false, error: payload };
     },
   },
 });

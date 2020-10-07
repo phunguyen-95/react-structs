@@ -1,5 +1,6 @@
 import { axiosClient } from "../adapters";
 
-export const getPost = () => {
-  return axiosClient.get("/posts");
+export const getPost = (postParams) => {
+  const { postId } = postParams;
+  return axiosClient.get(`/posts/${postId}`);
 };

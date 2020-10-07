@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import "./style.scss";
+
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -8,6 +9,7 @@ import {
   VideoCameraOutlined,
   UploadOutlined,
 } from "@ant-design/icons";
+import Post from "../post/index";
 
 const { Header, Sider, Content } = Layout;
 
@@ -17,7 +19,9 @@ const Container = () => {
   return (
     <Layout>
       <Sider trigger={null} collapsed={collapsed}>
-        <div className="logo" />
+        <div className="logo">
+          <img src="/public/logo-green.png" alt="logo" />
+        </div>
 
         <Menu mode="inline" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1" icon={<UserOutlined />}>
@@ -38,6 +42,7 @@ const Container = () => {
           style={{ paddingLeft: "16px" }}
         >
           <div
+            className="toggle"
             onClick={() => {
               setToggle(!collapsed);
             }}
@@ -53,7 +58,7 @@ const Container = () => {
             minHeight: 280,
           }}
         >
-          Content
+          <Post />
         </Content>
       </Layout>
     </Layout>

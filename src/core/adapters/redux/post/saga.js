@@ -1,13 +1,16 @@
-import { put, all, takeLatest } from "redux-saga/effects";
-import { postService } from "../../../services";
-import { getPost } from "./action";
+import { all, put, takeLatest } from "redux-saga/effects";
 
-export function* getPostsSaga(payload) {
+import { postService } from "../../../services";
+import { getPost, getPostSuccess, getPostFailed } from "./action";
+
+
+export function* getPostsSaga(action) {
   try {
-    console.log("-payload--", payload);
-    const response = yield postService.getPost();
-    console.log("--response-", response);
+    const { payload } = action;
+    const response = yield postService.getPost(payload);
+    yield put(getPostSuccess(response?.data));
   } catch (e) {
+    yield put(getPostFailed(e));
     throw e;
   }
 }

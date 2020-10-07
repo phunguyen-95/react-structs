@@ -6,7 +6,7 @@ import { getPost } from "../../core/adapters/redux/post/action";
 const Post = (props) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getPost());
+    dispatch(getPost({ postId: 1 }));
   }, []);
 
   const { post } = useSelector((state) => state);
