@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getPost } from "../../core/adapters/redux/post/action";
+import { getPost } from "../../store/redux/post/action";
 
 const Post = (props) => {
   const dispatch = useDispatch();

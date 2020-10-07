@@ -1,17 +1,17 @@
 import axios from "axios";
-import { CREATED, OK, UNAUTHORIZED } from "src/constants/index";
+import { OK, UNAUTHORIZED, CREATED } from "src/constants/index";
 
 const accessToken = "accessToken_abc";
 const refreshAccessToken = "refreshAccessToken_abc";
 
 const baseURL = "https://jsonplaceholder.typicode.com";
-export const axiosClient = axios.create({
+export const httpClient = axios.create({
   baseURL,
   timeout: 1000,
   headers: {},
 });
 
-axiosClient.interceptors.request.use(
+httpClient.interceptors.request.use(
   (config) => {
     let newConfig = config;
 
@@ -28,7 +28,7 @@ axiosClient.interceptors.request.use(
   }
 );
 
-axiosClient.interceptors.response.use(
+httpClient.interceptors.response.use(
   (response) => {
     return response;
   },
@@ -42,7 +42,7 @@ axiosClient.interceptors.response.use(
       return Promise.reject(error);
     }
     if (error.response.status === UNAUTHORIZED && !originalRequest._retry) {
-      const res = await axiosClient.post("./token/auth", {
+      const res = await httpClient.post("./token/auth", {
         refresh_token: refreshAccessToken,
       });
       if (res.status === CREATED || res.status === OK) {
@@ -51,7 +51,7 @@ axiosClient.interceptors.response.use(
           ...originalRequest,
           Authorization: `Bearer ${accessToken}`,
         };
-        return axiosClient(originalRequest);
+        return httpClient(originalRequest);
       }
     }
     return Promise.reject("error");
